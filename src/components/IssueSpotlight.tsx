@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 type IssueSpotlightProps = {
@@ -15,8 +18,34 @@ export default function IssueSpotlight({
   buttonLabel,
   backgroundImage,
 }: IssueSpotlightProps) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative min-h-[80vh] w-full overflow-hidden py-16 md:min-h-[90vh] md:py-24">
+    <section
+      ref={sectionRef}
+      className={`relative min-h-[80vh] w-full overflow-hidden py-16 transition-all duration-1000 md:min-h-[90vh] md:py-24 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
       <Image
         src={backgroundImage}
         alt=""

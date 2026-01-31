@@ -13,17 +13,19 @@ type FooterFeatureProps = {
 export default function FooterFeature({ tiles }: FooterFeatureProps) {
   return (
     <section id="contact" className="w-full bg-black py-16 md:py-24">
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-16 md:px-8">
+      <div className="mx-auto grid max-w-7xl gap-14 px-4 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-20 md:px-8">
         <div>
-          <div className="mt-6 grid grid-cols-[140px_1fr] items-center gap-8">
+          <div className="mt-6 grid grid-cols-[0px_1fr] items-center gap-10">
             <a
               href="https://www.instagram.com/fig._magazine/"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Instagram"
-              className="flex h-12 w-12 items-center justify-center justify-self-center rounded-full border border-white/40"
+              className="flex h-14 w-14 items-center justify-center justify-self-start rounded-full border border-white/40 -ml-18"
             >
               <svg
                 viewBox="0 0 24 24"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -34,7 +36,7 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
               </svg>
             </a>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-6">
             {tiles.map((tile) => (
               <div
                 key={tile.id}
@@ -65,22 +67,22 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 md:justify-center">
-          <h3 className="text-xl uppercase tracking-[0.2em] text-white md:text-2xl">
+        <div className="flex flex-col gap-5 md:justify-center">
+          <h3 className="text-2xl uppercase tracking-[0.2em] text-white md:text-3xl">
             LET&apos;S KEEP IN TOUCH!
           </h3>
-          <p className="text-sm text-white/70">
-            Sign up with your email address to receive news and updates.
+          <p className="text-base text-white/70">
+            Sign up with your email address to receive news.
           </p>
-          <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-2 flex flex-col gap-4 sm:flex-row">
             <input
               type="email"
               placeholder="Email Address"
-              className="h-11 w-full rounded-full bg-white/90 px-4 text-sm text-black outline-none placeholder:text-black/50 sm:max-w-xs"
+              className="h-12 w-full rounded-full bg-white/90 px-5 text-base text-black outline-none placeholder:text-black/50 sm:max-w-sm"
             />
             <button
               type="button"
-              className="h-11 rounded-full border border-white/60 px-6 text-xs uppercase tracking-[0.3em] text-white transition hover:bg-white/10"
+              className="h-12 rounded-full border border-white/60 px-8 text-sm uppercase tracking-[0.3em] text-white transition hover:bg-white/10"
             >
               SIGN UP
             </button>

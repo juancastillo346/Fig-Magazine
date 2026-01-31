@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type NavLink = {
   label: string;
@@ -13,27 +14,29 @@ type NavbarProps = {
 };
 
 export default function Navbar({ links, onLogoClick }: NavbarProps) {
-  const [activeLabel, setActiveLabel] = useState(links[0]?.label ?? "");
+  const pathname = usePathname();
 
   return (
     <header className="absolute left-0 top-0 z-30 w-full">
       <nav className="relative flex w-full items-start px-6 py-10 text-[11px] font-black uppercase tracking-[0.28em] text-white/85 md:px-12">
         <div className="flex flex-1 flex-wrap items-center gap-x-5 gap-y-2">
           {links.map((link) => {
-            const isActive = link.label === activeLabel;
+            const isActive =
+              link.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(link.href);
             return (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={() => setActiveLabel(link.label)}
-              className={`transition ${
-                isActive
-                  ? "border-b border-[#F6E7A6] text-[#F6E7A6]"
-                  : "border-b border-transparent hover:text-white"
-              }`}
-            >
-              {link.label}
-            </a>
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`transition ${
+                  isActive
+                    ? "border-b border-[#F6E7A6] text-[#F6E7A6]"
+                    : "border-b border-transparent hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
             );
           })}
         </div>

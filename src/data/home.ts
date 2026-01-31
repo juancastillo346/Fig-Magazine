@@ -1,10 +1,3 @@
-export const navLinks = [
-  { label: "HOME", href: "#" },
-  { label: "ISSUES", href: "#issues" },
-  { label: "ABOUT US", href: "#about" },
-  { label: "CONTACT", href: "#contact" },
-];
-
 export const issueSpotlight = {
   eyebrow: "Come celebrate the roots of our humanity.",
   title: "GENESIS",

@@ -5,11 +5,13 @@ import FooterFeature from "@/components/FooterFeature";
 import HeroMedia from "@/components/HeroMedia";
 import IssueSpotlight from "@/components/IssueSpotlight";
 import Navbar from "@/components/Navbar";
-import { issueSpotlight, navLinks, tiles } from "@/data/home";
+import { issueSpotlight, tiles } from "@/data/home";
+import { navLinks } from "@/data/nav";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFading, setIsFading] = useState(false);
+  const [issueKey, setIssueKey] = useState(0);
   const timersRef = useRef<number[]>([]);
 
   const startLoader = () => {
@@ -18,10 +20,11 @@ export default function Home() {
 
     setIsLoading(true);
     setIsFading(false);
+    setIssueKey((prev) => prev + 1);
 
     timersRef.current.push(
-      window.setTimeout(() => setIsFading(true), 1200),
-      window.setTimeout(() => setIsLoading(false), 1700)
+      window.setTimeout(() => setIsFading(true), 1600),
+      window.setTimeout(() => setIsLoading(false), 2500)
     );
   };
 
@@ -36,7 +39,7 @@ export default function Home() {
     <main className="bg-black text-white">
       {isLoading && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-500 ${
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-1000 ${
             isFading ? "opacity-0" : "opacity-100"
           }`}
         >
@@ -64,7 +67,7 @@ export default function Home() {
         videoSrc="/media/fig_hero2.mp4"
       />
       <div id="issues">
-        <IssueSpotlight {...issueSpotlight} />
+        <IssueSpotlight key={issueKey} {...issueSpotlight} />
       </div>
       <FooterFeature tiles={tiles} />
     </main>
