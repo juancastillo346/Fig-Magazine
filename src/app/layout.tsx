@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Fig Magazine",
   description: "Fashion editorial inspired landing page.",
+  icons: {
+    icon: "/media/png_logo.png",
+  },
 };
 
 export default function RootLayout({

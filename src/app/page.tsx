@@ -40,18 +40,18 @@ export default function Home() {
             isFading ? "opacity-0" : "opacity-100"
           }`}
         >
-          <div className="flex h-16 w-16 items-center justify-center rounded-full">
-            <img
-              src="/media/png_logo.png"
-              alt="Logo"
-              className="h-full w-full rounded-full object-cover animate-spin"
-              style={{
-                animationDuration: "1.2s",
-                animationIterationCount: 1,
-                animationTimingFunction: "linear",
-                transformOrigin: "center",
-              }}
-            />
+          <div
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-white animate-spin"
+            style={{
+              animationDuration: "1.2s",
+              animationIterationCount: 1,
+              animationTimingFunction: "linear",
+              transformOrigin: "center center",
+            }}
+          >
+            <span className="text-2xl font-black leading-none text-black">
+              F
+            </span>
           </div>
         </div>
       )}

@@ -26,10 +26,10 @@ export default function Navbar({ links, onLogoClick }: NavbarProps) {
               key={link.label}
               href={link.href}
               onClick={() => setActiveLabel(link.label)}
-              className={`transition hover:text-white ${
+              className={`transition ${
                 isActive
                   ? "border-b border-[#F6E7A6] text-[#F6E7A6]"
-                  : "border-b border-transparent"
+                  : "border-b border-transparent hover:text-white"
               }`}
             >
               {link.label}
