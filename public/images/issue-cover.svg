@@ -1,0 +1,7 @@
+<svg width="600" height="800" viewBox="0 0 600 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="800" fill="#B7D3D8"/>
+  <rect x="30" y="30" width="540" height="740" stroke="#1D1D1D" stroke-width="3"/>
+  <text x="50%" y="22%" fill="#1D1D1D" font-size="64" font-family="Georgia, serif" text-anchor="middle" letter-spacing="6">HAUTE</text>
+  <rect x="140" y="250" width="320" height="380" fill="#D5A18A"/>
+  <text x="50%" y="88%" fill="#1D1D1D" font-size="24" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" letter-spacing="4">ISSUE</text>
+</svg>
