@@ -3,6 +3,7 @@ export const issueSpotlight = {
   title: "GENESIS",
   coverImage: "/media/issues_placeholder.png",
   buttonLabel: "READ NOW",
+  buttonHref: "/issues",
   backgroundImage: "/media/issues_placeholder_bg.png",
 };
 

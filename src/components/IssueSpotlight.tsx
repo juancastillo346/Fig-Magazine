@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
 type IssueSpotlightProps = {
@@ -8,6 +9,7 @@ type IssueSpotlightProps = {
   title: string;
   coverImage: string;
   buttonLabel: string;
+  buttonHref: string;
   backgroundImage: string;
 };
 
@@ -16,6 +18,7 @@ export default function IssueSpotlight({
   title,
   coverImage,
   buttonLabel,
+  buttonHref,
   backgroundImage,
 }: IssueSpotlightProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -70,12 +73,12 @@ export default function IssueSpotlight({
             className="h-auto w-[210px] shadow-2xl md:w-[260px]"
           />
         </div>
-        <button
-          type="button"
+        <Link
+          href={buttonHref}
           className="mt-6 rounded-full border border-white/70 px-10 py-3 text-sm uppercase tracking-[0.3em] text-white transition hover:bg-white/10"
         >
           {buttonLabel}
-        </button>
+        </Link>
       </div>
     </section>
   );
