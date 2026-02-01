@@ -5,7 +5,10 @@ export const metadata: Metadata = {
   title: "Fig Magazine",
   description: "Fashion editorial inspired landing page.",
   icons: {
-    icon: "/media/png_logo.png",
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/media/png_logo.png", type: "image/png" },
+    ],
   },
 };
 
