@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import FooterFeature from "@/components/FooterFeature";
@@ -5,9 +8,22 @@ import { navLinks } from "@/data/nav";
 import { tiles } from "@/data/home";
 
 export default function IssuesPage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsVisible(true), 200);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
     <main className="bg-black text-white">
-      <Navbar links={navLinks} />
+      <div
+        className={`relative z-50 transition-opacity duration-1000 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Navbar links={navLinks} />
+      </div>
       <section className="relative min-h-screen w-full overflow-hidden">
         <Image
           src="/media/issues_placeholder_bg.png"
@@ -18,7 +34,11 @@ export default function IssuesPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
 
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 pt-24 text-center md:px-12">
+        <div
+          className={`relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 pt-32 text-center transition-opacity duration-1000 md:px-12 ${
+            isVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <p className="text-xs uppercase tracking-[0.4em] text-white/80">
             Winter 2026
           </p>

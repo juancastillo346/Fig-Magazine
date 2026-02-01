@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 type Tile = {
@@ -11,8 +14,35 @@ type FooterFeatureProps = {
 };
 
 export default function FooterFeature({ tiles }: FooterFeatureProps) {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="contact" className="w-full bg-black py-16 md:py-24">
+    <section
+      id="contact"
+      ref={sectionRef}
+      className={`w-full bg-black py-16 transition-all duration-1000 md:py-24 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
       <div className="mx-auto grid max-w-7xl gap-14 px-4 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-20 md:px-8">
         <div>
           <div className="mt-6 grid grid-cols-[0px_1fr] items-center gap-10">
