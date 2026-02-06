@@ -152,6 +152,7 @@ export default function GalleryPage() {
                 fill
                 className="object-cover transition duration-500 group-hover:scale-105"
                 sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+                priority={index < 4}
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
             </button>
