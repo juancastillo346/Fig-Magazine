@@ -25,11 +25,21 @@ export default function HeroMedia({
 
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden md:min-h-screen">
+      {/* Mobile background */}
+      <Image
+        src="/media/background_mobile.jpeg"
+        alt="Background"
+        fill
+        className="object-cover md:hidden"
+        priority
+        sizes="100vw"
+      />
+      {/* Desktop background */}
       <Image
         src="/media/background_home.JPG"
         alt="Background"
         fill
-        className="object-cover "
+        className="hidden object-cover md:block"
         style={{ objectPosition: "60% 55%" }}
         priority
         sizes="100vw"

@@ -100,6 +100,26 @@ export const galleryImages = [
     alt: "Gallery image 25",
   },
   {
+    src: "/media/galleryImages/36.png",
+    alt: "Gallery image 36",
+  },
+  {
+    src: "/media/galleryImages/37.png",
+    alt: "Gallery image 37",
+  },
+  {
+    src: "/media/galleryImages/38.png",
+    alt: "Gallery image 38",
+  },
+  {
+    src: "/media/galleryImages/39.png",
+    alt: "Gallery image 39",
+  },
+  {
+    src: "/media/galleryImages/40.png",
+    alt: "Gallery image 40",
+  },
+  {
     src: "/media/galleryImages/26.JPG",
     alt: "Gallery image 26",
   },
