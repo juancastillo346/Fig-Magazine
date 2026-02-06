@@ -58,10 +58,10 @@ export default function IssueSpotlight({
       />
       <div className="absolute inset-0 bg-black/40" />
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-4xl flex-col items-center justify-center px-6 text-center md:min-h-[90vh]">
-        <p className="text-sm uppercase tracking-[0.3em] text-white/80">
+        <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/90">
           {eyebrow}
         </p>
-        <h2 className="mt-4 font-[var(--font-serif)] text-[clamp(3rem,8vw,6rem)] leading-[0.9] text-white">
+        <h2 className="mt-4 text-[clamp(2.5rem,6vw,4.5rem)] font-black uppercase tracking-[0.15em] text-white">
           {title}
         </h2>
         <div className="mt-8">
@@ -75,7 +75,7 @@ export default function IssueSpotlight({
         </div>
         <Link
           href={buttonHref}
-          className="mt-6 rounded-full border border-white/70 px-10 py-3 text-sm uppercase tracking-[0.3em] text-white transition hover:bg-white/10"
+          className="mt-6 rounded-full border border-white/70 bg-black px-10 py-3 text-sm uppercase tracking-[0.3em] text-white transition hover:bg-black/80"
         >
           {buttonLabel}
         </Link>

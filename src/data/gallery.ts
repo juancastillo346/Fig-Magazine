@@ -120,23 +120,23 @@ export const galleryImages = [
     alt: "Gallery image 30",
   },
   {
-    src: "/media/galleryImages/31.jpg",
+    src: "/media/galleryImages/31.png",
     alt: "Gallery image 31",
   },
   {
-    src: "/media/galleryImages/32.jpg",
+    src: "/media/galleryImages/32.png",
     alt: "Gallery image 32",
   },
   {
-    src: "/media/galleryImages/33.jpg",
+    src: "/media/galleryImages/33.png",
     alt: "Gallery image 33",
   },
   {
-    src: "/media/galleryImages/34.jpg",
+    src: "/media/galleryImages/34.png",
     alt: "Gallery image 34",
   },
   {
-    src: "/media/galleryImages/35.jpg",
+    src: "/media/galleryImages/35.png",
     alt: "Gallery image 35",
   },
 ];

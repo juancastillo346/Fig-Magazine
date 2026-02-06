@@ -1,6 +1,6 @@
 export const issueSpotlight = {
-  eyebrow: "Come celebrate the roots of our humanity.",
-  title: "GENESIS",
+  eyebrow: "Celebrate our Launch",
+  title: "First Edition",
   coverImage: "/media/issues_placeholder.png",
   buttonLabel: "READ NOW",
   buttonHref: "/issues",

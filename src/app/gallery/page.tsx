@@ -58,11 +58,7 @@ export default function GalleryPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div
-        className={`relative z-50 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
 

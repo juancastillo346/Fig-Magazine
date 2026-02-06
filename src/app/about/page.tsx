@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import FooterFeature from "@/components/FooterFeature";
 import { navLinks } from "@/data/nav";
+import { tiles } from "@/data/home";
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,11 +17,7 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div
-        className={`relative z-50 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
       <section className="mx-auto flex min-h-screen max-w-8xl flex-col gap-16 px-6 pt-15 md:px-12 lg:flex-row lg:items-center">
@@ -31,28 +29,18 @@ export default function AboutPage() {
           <h1 className="whitespace-nowrap text-[clamp(3rem,8vw,6rem)] font-black uppercase tracking-[0.15em]">
             About Fig
           </h1>
-          <div className="mt-6 space-y-4 text-sm text-white/70 md:text-base">
+          <div className="mt-6 space-y-4 text-sm font-medium text-white/95 md:text-base leading-relaxed" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
             <p>
-              Fig Magazine is a student-led fashion, culture, and lifestyle
-              publication. Replace this with your real about copy.
+              In The Bell Jar, Sylvia Plath imagines life as a fig tree, its branches heavy with fruit—each fig a beautiful, distinct possible future.
             </p>
             <p>
-              Share your mission, the voices you amplify, and what makes this
-              issue cycle unique. Keep it concise and editorial.
+              FIG Magazine is a student-founded Columbia University publication inspired by this image, exploring culture through clothing, a medium that carries our interior lives out into the world. At FIG, each spread is its own fruit, glowing with a world and waiting to be shared.
             </p>
             <p>
-              Add any highlights, team info, or brief history here to match the
-              tone of your brand.
-
-              Fig Magazine is a student-led fashion, culture, and lifestyle
-              publication. Replace this with your real about copy.
-              Fig Magazine is a student-led fashion, culture, and lifestyle
-              publication. Replace this with your real about copy.Fig Magazine is a student-led fashion, culture, and lifestyle
-              publication. Replace this with your real about copy.
-              Fig Magazine is a student-led fashion, culture, and lifestyle
-              publication. Replace this with your real about copy.
-              Fig Magazine is a student-led fashion, culture, and lifestyle
-              publication. Replace this with your real about copy.
+              We explore the diverse cultures of our campus, our city, and the world beyond, using fashion as a shared language that bridges cultural silos. For us, every story, culture, and identity is a fig: ready to be chosen.
+            </p>
+            <p className="mt-6 font-semibold text-white">
+              So, take a bite.
             </p>
           </div>
         </div>
@@ -89,6 +77,7 @@ export default function AboutPage() {
         </div>
       </section>
       */}
+      <FooterFeature tiles={tiles} />
     </main>
   );
 }

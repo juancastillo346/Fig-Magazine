@@ -19,11 +19,7 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div
-        className={`relative z-50 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
       <section
@@ -41,7 +37,7 @@ export default function ContactPage() {
         >
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-xs uppercase tracking-[0.2em] text-white/70">
+              <label className="text-xs uppercase tracking-[0.2em] text-white/70" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 First Name (required)
               </label>
               <input
@@ -51,16 +47,18 @@ export default function ContactPage() {
                 required
                 className="h-12 w-full rounded-full border border-white/40 bg-transparent px-5 text-sm text-white outline-none placeholder:text-white/50"
                 placeholder="First Name"
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               />
               <ValidationError
                 prefix="First Name"
                 field="firstName"
                 errors={state.errors}
                 className="text-xs text-red-300"
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs uppercase tracking-[0.2em] text-white/70">
+              <label className="text-xs uppercase tracking-[0.2em] text-white/70" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 Last Name (required)
               </label>
               <input
@@ -70,18 +68,20 @@ export default function ContactPage() {
                 required
                 className="h-12 w-full rounded-full border border-white/40 bg-transparent px-5 text-sm text-white outline-none placeholder:text-white/50"
                 placeholder="Last Name"
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               />
               <ValidationError
                 prefix="Last Name"
                 field="lastName"
                 errors={state.errors}
                 className="text-xs text-red-300"
+                style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
               />
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs uppercase tracking-[0.2em] text-white/70">
+            <label className="text-xs uppercase tracking-[0.2em] text-white/70" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Email (required)
             </label>
             <input
@@ -91,17 +91,19 @@ export default function ContactPage() {
               required
               className="h-12 w-full rounded-full border border-white/40 bg-transparent px-5 text-sm text-white outline-none placeholder:text-white/50"
               placeholder="Email"
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
             />
             <ValidationError
               prefix="Email"
               field="email"
               errors={state.errors}
               className="text-xs text-red-300"
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs uppercase tracking-[0.2em] text-white/70">
+            <label className="text-xs uppercase tracking-[0.2em] text-white/70" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Phone
             </label>
             <input
@@ -110,17 +112,19 @@ export default function ContactPage() {
               name="phone"
               className="h-12 w-full rounded-full border border-white/40 bg-transparent px-5 text-sm text-white outline-none placeholder:text-white/50"
               placeholder="Phone"
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
             />
             <ValidationError
               prefix="Phone"
               field="phone"
               errors={state.errors}
               className="text-xs text-red-300"
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs uppercase tracking-[0.2em] text-white/70">
+            <label className="text-xs uppercase tracking-[0.2em] text-white/70" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
               Message (required)
             </label>
             <textarea
@@ -130,12 +134,14 @@ export default function ContactPage() {
               required
               className="w-full rounded-3xl border border-white/40 bg-transparent px-5 py-3 text-sm text-white outline-none placeholder:text-white/50"
               placeholder="Message"
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
             />
             <ValidationError
               prefix="Message"
               field="message"
               errors={state.errors}
               className="text-xs text-red-300"
+              style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}
             />
           </div>
 
@@ -148,12 +154,12 @@ export default function ContactPage() {
               {state.submitting ? "Sending..." : "Submit"}
             </button>
             {state.succeeded && (
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-white/70" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 Thanks! Your message has been sent.
               </p>
             )}
             {hasErrors && !state.succeeded && (
-              <p className="text-sm text-red-300">
+              <p className="text-sm text-red-300" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 Submission failed. Make sure the Formspree form is activated.
               </p>
             )}

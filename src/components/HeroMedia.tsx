@@ -5,7 +5,7 @@ type HeroMediaProps = {
   titleBottom: string;
   subtitle: string;
   subtitleEmphasis?: string;
-  videoSrc: string;
+  videoSrc: string; // Kept for backward compatibility but not used
 };
 
 export default function HeroMedia({
@@ -13,7 +13,6 @@ export default function HeroMedia({
   titleBottom,
   subtitle,
   subtitleEmphasis,
-  videoSrc,
 }: HeroMediaProps) {
   const emphasis = subtitleEmphasis ?? "";
   const emphasisIndex = emphasis ? subtitle.indexOf(emphasis) : -1;
@@ -30,7 +29,7 @@ export default function HeroMedia({
         src="/media/background_home.JPG"
         alt="Background"
         fill
-        className="object-cover"
+        className="object-cover "
         style={{ objectPosition: "60% 55%" }}
         priority
         sizes="100vw"
@@ -43,7 +42,7 @@ export default function HeroMedia({
             <span className="block">{titleBottom}</span>
           </h1>
         </div>
-        <p className="absolute bottom-16 left-8 max-w-none whitespace-nowrap text-xs tracking-wide text-white/90 md:bottom-33 md:left-12 md:text-sm">
+        <p className="absolute bottom-16 left-8 max-w-none whitespace-nowrap text-xs font-medium tracking-wide text-white md:bottom-33 md:left-12 md:text-sm" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
           {beforeEmphasis}
           {emphasis && emphasisIndex >= 0 ? (
             <span className="font-bold">{emphasis}</span>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FooterFeature from "@/components/FooterFeature";
 import { navLinks } from "@/data/nav";
@@ -17,42 +19,63 @@ export default function ArticlesPage() {
 
   return (
     <main className="min-h-screen bg-black text-white">
-      <div
-        className={`relative z-50 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
 
       <section
-        className={`mx-auto w-full max-w-5xl px-4 pb-20 pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
+        className={`mx-auto w-full max-w-7xl px-4 pb-20 pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="grid gap-6">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
-            <a
-              key={article.href}
+            <Link
+              key={article.id}
               href={article.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group rounded-2xl border border-white/10 bg-white/5 px-6 py-5 transition hover:-translate-y-1 hover:border-white/30 hover:bg-white/10"
+              className="group flex flex-col"
             >
-              <div className="flex items-center justify-between gap-6">
-                <div>
-                  <h2 className="text-lg font-semibold tracking-[0.08em]">
-                    {article.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-white/70">
-                    {article.description}
-                  </p>
-                </div>
-                <span className="text-2xl text-white/60 transition group-hover:text-white">
-                  →
-                </span>
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md border border-white/10 bg-white/5 transition group-hover:border-white/30">
+                <Image
+                  src={article.thumbnail}
+                  alt={article.title}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
               </div>
-            </a>
+              <h2 className="mt-4 text-lg font-bold tracking-[0.08em] text-white transition group-hover:text-white/90">
+                {article.title}
+              </h2>
+              {article.subtitle && (
+                <p className="mt-1 text-sm font-medium italic text-white/95" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                  {article.subtitle}
+                </p>
+              )}
+              <div className="mt-2 space-y-1 text-sm font-medium text-white/80" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                {article.writer && (
+                  <p>Writer: {article.writer}</p>
+                )}
+                {article.photographer && (
+                  <p>
+                    Photographer:{" "}
+                    {article.photographer === "Marina Lee" ? (
+                      <span
+                        className="cursor-pointer underline transition hover:text-white"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          e.preventDefault();
+                          window.open("https://marinaannlee.com", "_blank", "noopener,noreferrer");
+                        }}
+                      >
+                        {article.photographer}
+                      </span>
+                    ) : (
+                      article.photographer
+                    )}
+                  </p>
+                )}
+              </div>
+            </Link>
           ))}
         </div>
       </section>

@@ -62,9 +62,9 @@ export default function Home() {
       <HeroMedia
         titleTop="FIG"
         titleBottom="MAGAZINE"
-        subtitle="Fig Magazine is the University of Columbia's art, culture, and lifestyle publication."
+        subtitle="Fig Magazine is Columbia's student-run publication for art, culture, and lifestyle."
         subtitleEmphasis="Fig Magazine"
-        videoSrc="/media/fig_hero2.mp4"
+        videoSrc=""
       />
       <div id="issues">
         <IssueSpotlight key={issueKey} {...issueSpotlight} />

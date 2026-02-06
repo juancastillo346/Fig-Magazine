@@ -67,11 +67,7 @@ export default function VideosPage() {
 
   return (
     <main className="bg-black text-white">
-      <div
-        className={`relative z-50 transition-opacity duration-1000 ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
-      >
+      <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
       <section className="relative min-h-screen w-full overflow-hidden">
