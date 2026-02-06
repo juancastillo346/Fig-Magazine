@@ -29,8 +29,27 @@ export default function Navbar({ links, onLogoClick }: NavbarProps) {
 
   return (
     <header className="absolute left-0 top-0 z-30 w-full">
-      <nav className="relative flex w-full items-start px-6 py-10 text-[11px] font-black uppercase tracking-[0.28em] text-white/85 md:px-12">
-        <div className="flex flex-1 flex-wrap items-center gap-x-5 gap-y-2">
+      <nav className="relative flex flex-col w-full items-center px-6 py-6 text-[11px] font-black uppercase tracking-[0.28em] text-white/85 md:flex-row md:items-start md:px-12 md:py-10">
+        {/* Mobile: Logo at top */}
+        <div className="mb-4 md:hidden">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full">
+            <button
+              type="button"
+              aria-label="Home"
+              onClick={handleLogoClick}
+              className="flex h-full w-full cursor-pointer items-center justify-center"
+            >
+              <img
+                src="/media/png_logo.png"
+                alt="Logo"
+                className="h-full w-full rounded-full object-cover scale-150"
+              />
+            </button>
+          </div>
+        </div>
+
+        {/* Navigation links */}
+        <div className="flex flex-1 flex-wrap items-center justify-center gap-x-5 gap-y-2 md:justify-start">
           {links.map((link) => {
             const isActive =
               link.href === "/"
@@ -52,7 +71,8 @@ export default function Navbar({ links, onLogoClick }: NavbarProps) {
           })}
         </div>
 
-        <div className="absolute left-1/2 top-7 -translate-x-1/2">
+        {/* Desktop: Logo centered */}
+        <div className="hidden md:absolute md:left-1/2 md:top-7 md:-translate-x-1/2 md:block">
           <div className="flex h-12 w-12 items-center justify-center rounded-full">
             <button
               type="button"

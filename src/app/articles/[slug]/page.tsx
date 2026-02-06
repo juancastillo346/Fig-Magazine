@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +15,8 @@ export default function ArticlePage() {
   const params = useParams();
   const slug = params?.slug as string;
   const [isVisible, setIsVisible] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const article = articles.find((a) => a.id === slug);
 
@@ -22,6 +24,29 @@ export default function ArticlePage() {
     const timer = window.setTimeout(() => setIsVisible(true), 200);
     return () => window.clearTimeout(timer);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchEndX.current - touchStartX.current;
+    const minSwipeDistance = 100;
+
+    // Swipe from left to right (positive distance) - go back
+    if (distance > minSwipeDistance) {
+      router.back();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   if (!article) {
     return (
@@ -37,21 +62,26 @@ export default function ArticlePage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main
+      className="min-h-screen bg-black text-white"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
 
       <button
         onClick={() => router.back()}
-        className="fixed left-6 top-1/2 z-40 -translate-y-1/2 flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-white/70 transition hover:text-white"
+        className="hidden fixed left-6 top-1/2 z-40 -translate-y-1/2 md:flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-white/70 transition hover:text-white"
       >
         <span className="text-xl">←</span>
         <span>Back</span>
       </button>
 
       <section
-        className={`mx-auto w-full max-w-5xl px-4 pb-20 pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
+        className={`mx-auto w-full max-w-5xl px-4 pb-20 pt-40 transition-opacity duration-1000 sm:px-6 lg:px-8 md:pt-24 md:pl-20 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >

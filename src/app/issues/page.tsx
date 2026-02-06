@@ -31,7 +31,7 @@ export default function IssuesPage() {
         <div className="absolute inset-0 bg-black/40" />
 
         <div
-          className={`relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 pt-32 text-center transition-opacity duration-1000 md:px-12 ${
+          className={`relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 pt-40 md:pt-32 text-center transition-opacity duration-1000 md:px-12 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >

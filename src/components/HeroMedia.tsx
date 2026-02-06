@@ -35,14 +35,14 @@ export default function HeroMedia({
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/70" />
-      <div className="absolute inset-0 z-10 flex flex-col items-start justify-center px-8 md:px-10">
+      <div className="absolute inset-0 z-10 flex flex-col items-start justify-center px-4 md:px-10">
         <div className="w-full max-w-5xl text-left font-[var(--font-serif)] text-white">
           <h1 className="text-[clamp(4rem,16vw,13rem)] font-bold leading-[0.85] tracking-tight">
             <span className="block">{titleTop}</span>
             <span className="block">{titleBottom}</span>
           </h1>
         </div>
-        <p className="absolute bottom-16 left-8 max-w-none whitespace-nowrap text-xs font-medium tracking-wide text-white md:bottom-33 md:left-12 md:text-sm" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+        <p className="absolute bottom-16 left-4 max-w-[calc(100%-2rem)] text-[10px] font-medium leading-relaxed tracking-wide text-white md:bottom-33 md:left-12 md:max-w-none md:text-sm md:whitespace-nowrap" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
           {beforeEmphasis}
           {emphasis && emphasisIndex >= 0 ? (
             <span className="font-bold">{emphasis}</span>

@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import FooterFeature from "@/components/FooterFeature";
 import { navLinks } from "@/data/nav";
-import { tiles } from "@/data/home";
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,13 +18,13 @@ export default function AboutPage() {
       <div className="relative z-50">
         <Navbar links={navLinks} />
       </div>
-      <section className="mx-auto flex min-h-screen max-w-8xl flex-col gap-16 px-6 pt-15 md:px-12 lg:flex-row lg:items-center">
+      <section className="mx-auto flex min-h-screen max-w-8xl flex-col gap-16 px-4 pb-20 pt-40 md:px-12 md:pb-0 md:pt-15 lg:flex-row lg:items-center">
         <div
           className={`flex-1 transition-opacity duration-1000 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <h1 className="whitespace-nowrap text-[clamp(3rem,8vw,6rem)] font-black uppercase tracking-[0.15em]">
+          <h1 className="whitespace-nowrap text-center text-[clamp(3rem,8vw,6rem)] font-black uppercase tracking-[0.15em] md:text-left">
             About Fig
           </h1>
           <div className="mt-6 space-y-4 text-sm font-medium text-white/95 md:text-base leading-relaxed" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
@@ -77,7 +75,6 @@ export default function AboutPage() {
         </div>
       </section>
       */}
-      <FooterFeature tiles={tiles} />
     </main>
   );
 }

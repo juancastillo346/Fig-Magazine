@@ -20,7 +20,7 @@ export default function PreOrderPage() {
         <Navbar links={navLinks} />
       </div>
       <section
-        className={`mx-auto w-full max-w-7xl px-4 pb-20 pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
+        className={`mx-auto w-full max-w-7xl px-4 pb-20 pt-40 md:pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >

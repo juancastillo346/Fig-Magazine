@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import FooterFeature from "@/components/FooterFeature";
@@ -11,6 +11,8 @@ import { galleryImages } from "@/data/gallery";
 export default function GalleryPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const hasActive = activeIndex !== null;
   const imageCount = galleryImages.length;
@@ -56,6 +58,36 @@ export default function GalleryPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [hasActive, imageCount]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance) {
+      // Swipe left - next image
+      setActiveIndex((prev) =>
+        prev === null ? 0 : (prev + 1) % imageCount
+      );
+    } else if (distance < -minSwipeDistance) {
+      // Swipe right - previous image
+      setActiveIndex((prev) =>
+        prev === null ? 0 : (prev - 1 + imageCount) % imageCount
+      );
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <main className="min-h-screen bg-black text-white">
       <div className="relative z-50">
@@ -63,11 +95,11 @@ export default function GalleryPage() {
       </div>
 
       <section
-        className={`mx-auto w-full max-w-none px-4 pb-20 pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
+        className={`mx-auto w-full max-w-none px-4 pb-20 pt-32 md:pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-5">
           {galleryImages.map((image, index) => (
             <button
               key={`${image.src}-${index}`}
@@ -89,7 +121,12 @@ export default function GalleryPage() {
       </section>
 
       {hasActive && activeImage && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90">
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <button
             type="button"
             aria-label="Close gallery view"
@@ -102,7 +139,7 @@ export default function GalleryPage() {
           <button
             type="button"
             aria-label="Previous image"
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-4xl text-white/70 transition hover:text-white"
+            className="hidden absolute left-4 top-1/2 -translate-y-1/2 text-4xl text-white/70 transition hover:text-white md:block"
             onClick={() =>
               setActiveIndex(
                 (prev) =>
@@ -127,7 +164,7 @@ export default function GalleryPage() {
           <button
             type="button"
             aria-label="Next image"
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-4xl text-white/70 transition hover:text-white"
+            className="hidden absolute right-4 top-1/2 -translate-y-1/2 text-4xl text-white/70 transition hover:text-white md:block"
             onClick={() =>
               setActiveIndex(
                 (prev) => (prev === null ? 0 : (prev + 1) % imageCount)

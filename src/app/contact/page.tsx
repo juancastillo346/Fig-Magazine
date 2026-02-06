@@ -23,7 +23,7 @@ export default function ContactPage() {
         <Navbar links={navLinks} />
       </div>
       <section
-        className={`mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 pt-20 text-center transition-opacity duration-1000 md:px-12 ${
+        className={`mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-8 pt-40 text-center transition-opacity duration-1000 md:px-12 md:pt-20 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >

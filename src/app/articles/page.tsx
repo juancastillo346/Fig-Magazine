@@ -24,11 +24,11 @@ export default function ArticlesPage() {
       </div>
 
       <section
-        className={`mx-auto w-full max-w-7xl px-4 pb-20 pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
+        className={`mx-auto w-full max-w-7xl px-4 pb-20 pt-40 md:pt-24 transition-opacity duration-1000 sm:px-6 lg:px-8 ${
           isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           {articles.map((article) => (
             <Link
               key={article.id}
