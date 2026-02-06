@@ -39,19 +39,20 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
     <section
       id="contact"
       ref={sectionRef}
-      className={`w-full bg-black py-16 transition-all duration-1000 md:py-24 ${
+      className={`w-full bg-black py-12 transition-all duration-1000 md:py-5 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="mx-auto grid max-w-7xl gap-14 px-4 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-20 md:px-8">
-        <div>
-          <div className="mt-6 grid grid-cols-[0px_1fr] items-center gap-10">
+      <div className="mx-auto flex w-full max-w-5xl justify-center px-4 md:px-4">
+        <div className="w-full">
+          <div className="mt-6 grid w-full grid-cols-1 justify-items-center gap-6">
+            {/*
             <a
               href="https://www.instagram.com/fig._magazine/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="flex h-14 w-14 items-center justify-center justify-self-start rounded-full border border-white/40 -ml-18"
+              className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -65,38 +66,39 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
                 <circle cx="17" cy="7" r="1" />
               </svg>
             </a>
-
-            <div className="grid grid-cols-3 gap-6">
-            {tiles.map((tile) => (
-              <div
-                key={tile.id}
-                className="group relative aspect-square overflow-hidden rounded-sm border border-white/5"
-              >
-                <Image
-                  src={tile.image}
-                  alt=""
-                  fill
-                  className="object-cover transition duration-300 group-hover:scale-105"
-                />
-                {tile.hasPlay && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/60 bg-black/40">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="ml-0.5 h-4 w-4 text-white"
-                        fill="currentColor"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+            */}
+            <div className="grid w-full max-w-md grid-cols-3 gap-6 sm:max-w-lg md:max-w-xl">
+              {tiles.map((tile) => (
+                <div
+                  key={tile.id}
+                  className="group relative aspect-square overflow-hidden rounded-sm border border-white/5"
+                >
+                  <Image
+                    src={tile.image}
+                    alt=""
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                  />
+                  {tile.hasPlay && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/60 bg-black/40">
+                        <svg
+                          viewBox="0 0 24 24"
+                          className="ml-0.5 h-4 w-4 text-white"
+                          fill="currentColor"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
+        {/*
         <div className="flex flex-col gap-5 md:justify-center">
           <h3 className="text-2xl uppercase tracking-[0.2em] text-white md:text-3xl">
             LET&apos;S KEEP IN TOUCH!
@@ -118,6 +120,7 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
             </button>
           </div>
         </div>
+        */}
       </div>
     </section>
   );

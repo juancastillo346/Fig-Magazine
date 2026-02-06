@@ -66,14 +66,15 @@ export default function AboutPage() {
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
             <Image
-              src="/media/issues_placeholder.png"
-              alt="About Fig"
+              src="/media/logo.png"
+              alt="About Fig logo"
               fill
               className="object-cover"
             />
           </div>
         </div>
       </section>
+      {/*
       <section className="mx-auto flex min-h-screen max-w-8xl flex-col px-6 py-20 md:px-12">
         <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-black uppercase tracking-[0.15em]">
           Meet The Team
@@ -89,6 +90,7 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+      */}
       <FooterFeature tiles={tiles} />
     </main>
   );
