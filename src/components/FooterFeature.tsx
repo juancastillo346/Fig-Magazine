@@ -39,20 +39,19 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
     <section
       id="contact"
       ref={sectionRef}
-      className={`w-full bg-black py-12 transition-all duration-1000 md:py-5 ${
+      className={`w-full bg-black py-16 transition-all duration-1000 md:py-24 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="mx-auto flex w-full max-w-5xl justify-center px-4 md:px-4">
-        <div className="w-full">
-          <div className="mt-6 grid w-full grid-cols-1 justify-items-center gap-6">
-            {/*
+      <div className="mx-auto grid max-w-7xl gap-14 px-4 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-20 md:px-8">
+        <div>
+          <div className="mt-6 grid grid-cols-[0px_1fr] items-center gap-10">
             <a
               href="https://www.instagram.com/fig._magazine/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40"
+              className="flex h-14 w-14 items-center justify-center justify-self-start rounded-full border border-white/40 -ml-18"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -66,8 +65,8 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
                 <circle cx="17" cy="7" r="1" />
               </svg>
             </a>
-            */}
-            <div className="grid w-full max-w-md grid-cols-3 gap-6 sm:max-w-lg md:max-w-xl">
+
+            <div className="grid grid-cols-3 gap-6">
               {tiles.map((tile) => (
                 <div
                   key={tile.id}
@@ -98,29 +97,14 @@ export default function FooterFeature({ tiles }: FooterFeatureProps) {
           </div>
         </div>
 
-        {/*
         <div className="flex flex-col gap-5 md:justify-center">
           <h3 className="text-2xl uppercase tracking-[0.2em] text-white md:text-3xl">
             LET&apos;S KEEP IN TOUCH!
           </h3>
           <p className="text-base text-white/70">
-            Sign up with your email address to receive news.
+            Mailing list coming soon.
           </p>
-          <div className="mt-2 flex flex-col gap-4 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="h-12 w-full rounded-full bg-white/90 px-5 text-base text-black outline-none placeholder:text-black/50 sm:max-w-sm"
-            />
-            <button
-              type="button"
-              className="h-12 rounded-full border border-white/60 px-8 text-sm uppercase tracking-[0.3em] text-white transition hover:bg-white/10"
-            >
-              SIGN UP
-            </button>
-          </div>
         </div>
-        */}
       </div>
     </section>
   );

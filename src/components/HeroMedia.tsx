@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type HeroMediaProps = {
   titleTop: string;
   titleBottom: string;
@@ -24,13 +26,14 @@ export default function HeroMedia({
 
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden md:min-h-screen">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        src={videoSrc}
+      <Image
+        src="/media/background_home.JPG"
+        alt="Background"
+        fill
+        className="object-cover"
+        style={{ objectPosition: "60% 55%" }}
+        priority
+        sizes="100vw"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/70" />
       <div className="absolute inset-0 z-10 flex flex-col items-start justify-center px-8 md:px-10">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type NavLink = {
   label: string;
@@ -15,6 +15,17 @@ type NavbarProps = {
 
 export default function Navbar({ links, onLogoClick }: NavbarProps) {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogoClick = () => {
+    if (pathname === "/") {
+      // If already on home page, trigger animation
+      onLogoClick?.();
+    } else {
+      // Navigate to home page (which will trigger animation automatically)
+      router.push("/");
+    }
+  };
 
   return (
     <header className="absolute left-0 top-0 z-30 w-full">
@@ -46,7 +57,7 @@ export default function Navbar({ links, onLogoClick }: NavbarProps) {
             <button
               type="button"
               aria-label="Home"
-              onClick={onLogoClick}
+              onClick={handleLogoClick}
               className="flex h-full w-full cursor-pointer items-center justify-center"
             >
               <img
@@ -58,25 +69,6 @@ export default function Navbar({ links, onLogoClick }: NavbarProps) {
           </div>
         </div>
 
-        <a
-          href="https://www.instagram.com/fig._magazine/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          className="absolute right-6 top-7 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white/85 transition hover:text-white md:right-12"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            className="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z" />
-            <circle cx="12" cy="12" r="3.5" />
-            <circle cx="17" cy="7" r="1" />
-          </svg>
-        </a>
       </nav>
     </header>
   );
