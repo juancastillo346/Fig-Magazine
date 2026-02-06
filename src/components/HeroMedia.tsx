@@ -24,13 +24,14 @@ export default function HeroMedia({
       : "";
 
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden md:min-h-screen">
+    <section className="relative min-h-screen w-full overflow-hidden md:min-h-screen">
       {/* Mobile background */}
       <Image
         src="/media/background_mobile.jpeg"
         alt="Background"
         fill
         className="object-cover md:hidden"
+        style={{ transform: "scale(1.2)" }}
         priority
         sizes="100vw"
       />
