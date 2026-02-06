@@ -35,7 +35,7 @@ export default function IssuesPage() {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/90">
+          <p className="hidden text-sm font-bold uppercase tracking-[0.3em] text-white/90 md:block">
             Celebrate our Launch
           </p>
           <h1 className="mt-4 text-[clamp(2.5rem,6vw,4.5rem)] font-black uppercase tracking-[0.15em]">

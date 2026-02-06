@@ -13,6 +13,8 @@ export default function GalleryPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const touchEndY = useRef<number | null>(null);
 
   const hasActive = activeIndex !== null;
   const imageCount = galleryImages.length;
@@ -28,6 +30,18 @@ export default function GalleryPage() {
     const timer = window.setTimeout(() => setIsVisible(true), 200);
     return () => window.clearTimeout(timer);
   }, []);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (hasActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [hasActive]);
 
   useEffect(() => {
     if (!hasActive) {
@@ -60,32 +74,57 @@ export default function GalleryPage() {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     touchEndX.current = e.touches[0].clientX;
+    touchEndY.current = e.touches[0].clientY;
+    
+    // Prevent vertical scrolling - only allow horizontal swipes
+    if (touchStartX.current !== null && touchStartY.current !== null) {
+      const deltaX = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const deltaY = Math.abs(e.touches[0].clientY - touchStartY.current);
+      
+      // If horizontal movement is greater than vertical, prevent default (scrolling)
+      if (deltaX > deltaY) {
+        e.preventDefault();
+      }
+    }
   };
 
   const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+    if (!touchStartX.current || !touchEndX.current || !touchStartY.current || !touchEndY.current) {
+      touchStartX.current = null;
+      touchEndX.current = null;
+      touchStartY.current = null;
+      touchEndY.current = null;
+      return;
+    }
 
-    const distance = touchStartX.current - touchEndX.current;
+    const distanceX = touchStartX.current - touchEndX.current;
+    const distanceY = Math.abs(touchStartY.current - touchEndY.current);
     const minSwipeDistance = 50;
 
-    if (distance > minSwipeDistance) {
-      // Swipe left - next image
-      setActiveIndex((prev) =>
-        prev === null ? 0 : (prev + 1) % imageCount
-      );
-    } else if (distance < -minSwipeDistance) {
-      // Swipe right - previous image
-      setActiveIndex((prev) =>
-        prev === null ? 0 : (prev - 1 + imageCount) % imageCount
-      );
+    // Only process horizontal swipes (ignore if vertical movement is significant)
+    if (Math.abs(distanceX) > distanceY && Math.abs(distanceX) > minSwipeDistance) {
+      if (distanceX > minSwipeDistance) {
+        // Swipe left - next image
+        setActiveIndex((prev) =>
+          prev === null ? 0 : (prev + 1) % imageCount
+        );
+      } else if (distanceX < -minSwipeDistance) {
+        // Swipe right - previous image
+        setActiveIndex((prev) =>
+          prev === null ? 0 : (prev - 1 + imageCount) % imageCount
+        );
+      }
     }
 
     touchStartX.current = null;
     touchEndX.current = null;
+    touchStartY.current = null;
+    touchEndY.current = null;
   };
 
   return (
@@ -126,11 +165,17 @@ export default function GalleryPage() {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          onClick={(e) => {
+            // Close if clicking outside the image
+            if (e.target === e.currentTarget) {
+              setActiveIndex(null);
+            }
+          }}
         >
           <button
             type="button"
             aria-label="Close gallery view"
-            className="absolute right-6 top-6 text-xs uppercase tracking-[0.3em] text-white/70 transition hover:text-white"
+            className="absolute right-6 top-6 z-50 text-xs uppercase tracking-[0.3em] text-white/70 transition hover:text-white"
             onClick={() => setActiveIndex(null)}
           >
             Close
@@ -139,18 +184,22 @@ export default function GalleryPage() {
           <button
             type="button"
             aria-label="Previous image"
-            className="hidden absolute left-4 top-1/2 -translate-y-1/2 text-4xl text-white/70 transition hover:text-white md:block"
-            onClick={() =>
+            className="hidden absolute left-4 top-1/2 -translate-y-1/2 z-50 text-4xl text-white/70 transition hover:text-white md:block"
+            onClick={(e) => {
+              e.stopPropagation();
               setActiveIndex(
                 (prev) =>
                   (prev === null ? 0 : prev - 1 + imageCount) % imageCount
-              )
-            }
+              );
+            }}
           >
             ←
           </button>
 
-          <div className="relative mx-6 h-[72vh] w-[88vw] max-w-5xl">
+          <div 
+            className="relative mx-6 h-[72vh] w-[88vw] max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={activeImage.src}
               alt={activeImage.alt}
@@ -164,12 +213,13 @@ export default function GalleryPage() {
           <button
             type="button"
             aria-label="Next image"
-            className="hidden absolute right-4 top-1/2 -translate-y-1/2 text-4xl text-white/70 transition hover:text-white md:block"
-            onClick={() =>
+            className="hidden absolute right-4 top-1/2 -translate-y-1/2 z-50 text-4xl text-white/70 transition hover:text-white md:block"
+            onClick={(e) => {
+              e.stopPropagation();
               setActiveIndex(
                 (prev) => (prev === null ? 0 : (prev + 1) % imageCount)
-              )
-            }
+              );
+            }}
           >
             →
           </button>
