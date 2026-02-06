@@ -5,10 +5,8 @@ export const metadata: Metadata = {
   title: "Fig Magazine",
   description: "Fashion editorial inspired landing page.",
   icons: {
-    icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/media/png_logo.png", type: "image/png" },
-    ],
+    icon: [{ url: "/media/png_logo.png?v=2", type: "image/png" }],
+    apple: [{ url: "/media/png_logo.png?v=2", type: "image/png" }],
   },
 };
 
@@ -20,6 +18,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+          rel="icon"
+          href="/media/png_logo.png?v=2"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          href="/media/png_logo.png?v=2"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          rel="shortcut icon"
+          href="/media/png_logo.png?v=2"
+          type="image/png"
+        />
+        <link rel="apple-touch-icon" href="/media/png_logo.png?v=2" />
         <link
           rel="preload"
           href="/media/tt_tsars/TT%20Tsars%20A%20Trial%20Regular.otf"

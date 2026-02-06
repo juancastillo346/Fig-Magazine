@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import FooterFeature from "@/components/FooterFeature";
 import { navLinks } from "@/data/nav";
-import { tiles } from "@/data/home";
 
 export default function AboutPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -91,7 +89,6 @@ export default function AboutPage() {
         </div>
       </section>
       */}
-      <FooterFeature tiles={tiles} />
     </main>
   );
 }
