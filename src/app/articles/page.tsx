@@ -31,14 +31,8 @@ export default function ArticlesPage() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
           {articles.map((article) => {
             const isComingSoon = (article as any).comingSoon;
-            const ArticleWrapper = isComingSoon ? "div" : Link;
-            
-            return (
-              <ArticleWrapper
-                key={article.id}
-                href={isComingSoon ? undefined : article.href}
-                className={`group flex flex-col ${isComingSoon ? "cursor-default" : ""}`}
-              >
+            const content = (
+              <>
                 <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md border border-white/10 bg-white/5 transition group-hover:border-white/30">
                   <Image
                     src={article.thumbnail}
@@ -86,7 +80,28 @@ export default function ArticlesPage() {
                     </p>
                   )}
                 </div>
-              </ArticleWrapper>
+              </>
+            );
+            
+            if (isComingSoon) {
+              return (
+                <div
+                  key={article.id}
+                  className="group flex flex-col cursor-default"
+                >
+                  {content}
+                </div>
+              );
+            }
+            
+            return (
+              <Link
+                key={article.id}
+                href={article.href}
+                className="group flex flex-col"
+              >
+                {content}
+              </Link>
             );
           })}
         </div>
