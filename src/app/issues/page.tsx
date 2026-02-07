@@ -42,13 +42,14 @@ export default function IssuesPage() {
             First Edition
           </h1>
 
-          <div className="mt-10 w-full max-w-3xl overflow-hidden rounded-md border border-white/10 bg-white/5">
-            <div className="relative aspect-[16/9] w-full">
-              <Image
-                src="/media/issues_placeholder.png"
-                alt="First Edition issue preview"
-                fill
-                className="object-cover object-[50%_20%]"
+          <div className="mt-10 w-full max-w-6xl overflow-hidden rounded-md border border-white/10 bg-white/5">
+            <div className="relative aspect-[4/3] w-full">
+              <iframe
+                src="https://e.issuu.com/embed.html?d=fig_magazine_preview&u=figmagazine"
+                title="Fig Magazine Preview"
+                className="h-full w-full border-0"
+                allowFullScreen
+                scrolling="no"
               />
             </div>
           </div>

@@ -131,12 +131,15 @@ export default function ArticlePage() {
           </div>
         </div>
 
-        <div className="mt-8 space-y-6 text-base font-medium leading-relaxed text-white/95 md:text-lg" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+        <div className="article-content mt-8 space-y-6 text-base font-medium leading-relaxed text-white/95 md:text-lg" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
           {article.content ? (
             <>
               {article.content.split('\n\n').map((paragraph, index) => (
                 paragraph.trim() && (
-                  <p key={index}>{paragraph.trim()}</p>
+                  <p 
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: paragraph.trim() }}
+                  />
                 )
               ))}
               {article.sources && article.sources.length > 0 && (

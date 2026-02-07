@@ -42,3 +42,13 @@ body {
   color: var(--foreground);
   font-family: "TT Tsars", system-ui, sans-serif;
 }
+
+.article-content a {
+  text-decoration: underline;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.article-content a:hover {
+  opacity: 0.8;
+}

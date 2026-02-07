@@ -1,7 +1,7 @@
 export const issueSpotlight = {
   eyebrow: "Celebrate our Launch",
   title: "First Edition",
-  coverImage: "/media/issues_placeholder.png",
+  coverImage: "/media/firstEditionCover.png",
   buttonLabel: "READ NOW",
   buttonHref: "/issues",
   backgroundImage: "/media/issues_placeholder_bg.png",
